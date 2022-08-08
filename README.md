@@ -31,3 +31,6 @@ Hotwireを用いてSPA likeで開発する。
 3. .envファイルを [環境変数（開発環境）](##環境変数（開発環境）) に合わせて作成する
 4. `docker-compose up`
 5. http://localhost:3000 にアクセスできればOK
+
+## 技術的な詳細
+[MeeHatドキュメント](./doc/README.md)
