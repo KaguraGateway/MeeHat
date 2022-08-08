@@ -1,0 +1,30 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    platform: linux/x86_64
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+    - ./tmp/db/data:/var/lib/mysql
+    - ./tmp/db/my.cnf:/etc/mysql/conf.d/my.cnf
+    - ./tmp/db/sql:/docker-entrypoint-initdb.d
+    ports:
+    - "3306:3306"
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_USER: "${MYSQL_USER}"
+      DATABASE_PASSWORD: "${MYSQL_PASSWORD}"
+    depends_on:
+      - db
