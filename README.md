@@ -17,7 +17,7 @@ Hotwireを用いてSPA likeで開発する。
 
 ## 環境変数（開発環境）
 - MYSQL_ROOT_PASSWORD: DBのrootパスワード
-- MYSQL_DATABASE: MYSQL_USERがデフォルトで権限を持つDB名
+- MYSQL_DATABASE: MYSQL_USERがデフォルトで権限を持つDB名（myapp_development）
 - MYSQL_USER: Railsが使用するDBユーザーアカウント
 - MYSQL_PASSWORD: MYSQL_USERのパスワード
 
