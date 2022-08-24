@@ -32,8 +32,15 @@ Hotwireを用いてSPA likeで開発する。
 1. Docker（>= v20.10）とDocker Compose（>= v2.6.0）をインストールする
 2. 本レポジトリをクローンする
 3. .envファイルを [環境変数（開発環境）](##環境変数（開発環境）) に合わせて作成する
-4. `docker-compose up`
-5. http://localhost:3000 にアクセスできればOK
+4. `docker compose build`
+5. `docker compose up`
+6. http://localhost:3000 にアクセスできればOK
+
+### `bundle install`時
+```
+docker compose build
+```
+で`bundle install`することができます。
 
 ## 技術的な詳細
 [MeeHatドキュメント](./doc/README.md)
