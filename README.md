@@ -55,5 +55,12 @@ sudo chown -R ユーザー:root .
 ```
 を実行することで解決する場合があります。
 
+### db:migrate時に`Got error 168 - 'Unknown (generic) error from engine' from storage engine`となる場合
+```
+// container_idはdbのid
+docker stop container_id
+docker start container_id
+```
+
 ## 技術的な詳細
 [MeeHatドキュメント](./doc/README.md)
