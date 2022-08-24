@@ -42,5 +42,18 @@ docker compose build
 ```
 で`bundle install`することができます。
 
+### `rails`コマンドを使用したいとき
+`docker compose run web `...で実行することができます。<br>
+例）rails db:migrate
+```
+docker compose run web rails db:migrate
+```
+
+### パーミッションエラーが出たとき
+```shell
+sudo chown -R ユーザー:root .
+```
+を実行することで解決する場合があります。
+
 ## 技術的な詳細
 [MeeHatドキュメント](./doc/README.md)
