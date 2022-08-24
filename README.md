@@ -10,6 +10,7 @@
 - MySQL
 - Redis
 - Elasticsearch（検索）
+- kibana（分析用）
 ### フロントエンド（利用者用）
 - TypeScript
 - React

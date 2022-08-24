@@ -16,6 +16,34 @@ services:
     - ./tmp/db/sql:/docker-entrypoint-initdb.d
     ports:
     - "3306:3306"
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.3.3
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - LOG4J_FORMAT_MSG_NO_LOOKUPS=true
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+    volumes:
+      - ./tmp/elasticsearch:/usr/share/elasticsearch/data
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./tmp/redis:/data
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.3.3
+    ports:
+      - "5601:5601"
+    environment:
+      ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
+    depends_on:
+      - elasticsearch
   web:
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
@@ -28,3 +56,5 @@ services:
       DATABASE_PASSWORD: "${MYSQL_PASSWORD}"
     depends_on:
       - db
+      - elasticsearch
+      - redis
