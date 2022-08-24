@@ -23,6 +23,9 @@ gem 'propshaft'
 gem 'jsbundling-rails'
 gem 'foreman'
 
+# CSS
+gem 'cssbundling-rails'
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
