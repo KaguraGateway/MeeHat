@@ -8,6 +8,8 @@
 - Ruby 3.1.2
 - Ruby on Rails >= 7
 - MySQL
+- Redis
+- Elasticsearch（検索）
 ### フロントエンド（利用者用）
 - TypeScript
 - React

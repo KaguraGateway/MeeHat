@@ -16,3 +16,7 @@ WebSocketを介したリアルタイム通信APIです。<br>
 ## `/api/v1/workspaces`
 ワークスペースに関係するAPIです。<br>
 詳細は[MeeHat WebAPI Workspaceドキュメント(v1)](./workspaces.md)
+
+## `/api/v1/channels`
+チャンネルに関係するAPIです。<br>
+詳細は[MeeHat WebAPI Channelドキュメント(v1)](./channels.md)
