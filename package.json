@@ -1,0 +1,14 @@
+{
+  "name": "app",
+  "private": "true",
+  "scripts": {
+    "build": "tsc --noEmit && esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
+}
