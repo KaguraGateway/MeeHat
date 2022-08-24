@@ -138,6 +138,7 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
+    foreman (0.87.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     hashie (5.0.0)
@@ -183,6 +184,11 @@ GEM
     nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    propshaft (0.6.4)
+      actionpack (>= 7.0.0)
+      activesupport (>= 7.0.0)
+      rack
+      railties (>= 7.0.0)
     public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
@@ -296,9 +302,11 @@ DEPENDENCIES
   devise
   elasticsearch-model!
   elasticsearch-rails!
+  foreman
   jbuilder
   jsbundling-rails
   mysql2 (~> 0.5)
+  propshaft
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
   redis (~> 4.0)

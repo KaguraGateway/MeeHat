@@ -19,7 +19,9 @@ gem "puma", "~> 5.0"
 # gem "importmap-rails"
 
 # instead of importmap-rails
+gem 'propshaft'
 gem 'jsbundling-rails'
+gem 'foreman'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
