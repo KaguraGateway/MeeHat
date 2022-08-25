@@ -5,7 +5,10 @@
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
     "typecheck": "tsc --noEmit",
     "build:css": "sass ./app/assets/stylesheets:./app/assets/builds --no-source-map --load-path=node_modules",
-    "build:tailwind": "tailwindcss build ./app/assets/stylesheets/_tailwind.css --output ./app/assets/builds/tailwind.css"
+    "build:tailwind": "tailwindcss build -i ./app/assets/stylesheets/_tailwind.css -o ./app/assets/builds/tailwind.css",
+    "watch:css": "run-p watch:sass watch:tailwind",
+    "watch:sass": "sass ./app/assets/stylesheets:./app/assets/builds --no-source-map --load-path=node_modules --watch",
+    "watch:tailwind": "tailwindcss build -i ./app/assets/stylesheets/_tailwind.css -o ./app/assets/builds/tailwind.css --watch"
   },
   "dependencies": {
     "autoprefixer": "^10.4.8",
