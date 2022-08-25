@@ -27,6 +27,8 @@ Hotwireを用いてSPA likeで開発する。
 ## 環境変数（本番環境）
 - MYSQL_USER: Railsが使用するDBユーザーアカウント
 - MYSQL_PASSWORD: MYSQL_USERのパスワード
+- REDIS_HOST: Redisのホスト（redis）
+- REDIS_PORT: Redisのポート
 
 ## 環境構築（開発環境）
 1. Docker（>= v20.10）とDocker Compose（>= v2.6.0）をインストールする
