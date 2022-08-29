@@ -23,12 +23,16 @@ Hotwireを用いてSPA likeで開発する。
 - MYSQL_DATABASE: MYSQL_USERがデフォルトで権限を持つDB名（myapp_development）
 - MYSQL_USER: Railsが使用するDBユーザーアカウント
 - MYSQL_PASSWORD: MYSQL_USERのパスワード
+- MAIL_USER: メール送信用のSMTPアカウントのメールアドレス
+- MAIL_PASSWORD: メール送信用のSMTPアカウントのパスワード
 
 ## 環境変数（本番環境）
 - MYSQL_USER: Railsが使用するDBユーザーアカウント
 - MYSQL_PASSWORD: MYSQL_USERのパスワード
 - REDIS_HOST: Redisのホスト（redis）
 - REDIS_PORT: Redisのポート
+- MAIL_USER: メール送信用のSMTPアカウントのメールアドレス
+- MAIL_PASSWORD: メール送信用のSMTPアカウントのパスワード
 
 ## 環境構築（開発環境）
 1. Docker（>= v20.10）とDocker Compose（>= v2.6.0）をインストールする

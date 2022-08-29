@@ -20,5 +20,17 @@ module Myapp
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.cache_store = :redis_store, "redis://#{ENV['REDIS_HOST']}:#{ENV['REDIS_PORT']}/1/cache", { expires_in: 90.minutes }
+
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        :enable_starttls_auto => true,
+        :address => "mail.kagura.cloud",
+        :port => 587,
+        :domain => "mail.kagura.cloud",
+        :user_name => "#{ENV['MAIL_USER']}",
+        :password => "#{ENV['MAIL_PASSWORD']}",
+        :authentication => :login
+    }
   end
 end

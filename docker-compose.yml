@@ -58,6 +58,8 @@ services:
       DATABASE_PASSWORD: "${MYSQL_PASSWORD}"
       REDIS_HOST: "redis"
       REDIS_PORT: "6379"
+      MAIL_USER: "${MAIL_USER}"
+      MAIL_PASSWORD: "${MAIL_PASSWORD}"
     depends_on:
       - db
       - elasticsearch
