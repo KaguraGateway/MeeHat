@@ -4,8 +4,7 @@
             <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600" alt="Workflow">
             <h2 class="mt-6 text-center text-3xl tracking-tight font-bold text-gray-900  dark:text-gray-300">Login</h2>
         </div>
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= render "devise/shared/error_messages", resource: resource %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="rounded-md shadow-sm -space-y-px">
                 <div>
                     <%= f.label :email, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
@@ -22,7 +21,7 @@
                         <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                             <span class="material-symbols-outlined text-gray-900 dark:text-gray-300">key</span>
                         </div>
-                        <%= f.password_field :password, autocomplete: "new-password", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", required: true %>
+                        <%= f.password_field :password, autocomplete: "current-password", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", required: true %>
                     </div>
                 </div>
             </div>

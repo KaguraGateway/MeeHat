@@ -24,12 +24,13 @@ module Myapp
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-        :enable_starttls_auto => true,
         :address => "mail.kagura.cloud",
-        :port => 587,
+        :port => 465,
         :domain => "mail.kagura.cloud",
         :user_name => "#{ENV['MAIL_USER']}",
         :password => "#{ENV['MAIL_PASSWORD']}",
+        :openssl_verify_mode => 'peer',
+        :tls => true,
         :authentication => :plain
     }
   end

@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, path: "", path_names: { sign_in: "login", sign_out: "logout", sign_up: "register" }
-
-  devise_scope :user do
-    patch '/register', to: 'devise/registrations#update'
-    put '/register', to: 'devise/registrations#update'
-    delete '/register', to: 'devise/registrations#destroy'
-    post '/register', to: 'devise/registrations#create'
-  end
+  get 'app(/*path1(/*path2(/*path3(/*path4(/*path5(/*path6))))))', to: 'app#index'
+  devise_for :users, path: "", path_names: { sign_in: "login", sign_out: "logout", registration: "register" }
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
