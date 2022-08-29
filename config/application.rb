@@ -30,7 +30,7 @@ module Myapp
         :domain => "mail.kagura.cloud",
         :user_name => "#{ENV['MAIL_USER']}",
         :password => "#{ENV['MAIL_PASSWORD']}",
-        :authentication => :login
+        :authentication => :plain
     }
   end
 end
