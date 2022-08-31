@@ -46,6 +46,8 @@ gem 'elasticsearch-rails', github: 'elasticsearch/elasticsearch-rails', branch: 
 # devise
 gem "devise"
 
+gem 'active_model_serializers'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

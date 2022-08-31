@@ -1,4 +1,4 @@
-import { Container, createTheme, CssBaseline, Grid, ThemeProvider } from "@mui/material";
+import { Box, Container, createTheme, CssBaseline, Grid, ThemeProvider } from "@mui/material";
 import React from "react";
 import { LeftWorkspaceNav } from "./components/models/LeftWorkspaceNav";
 import { LeftWorkspacesBar } from "./components/models/LeftWorkspacesBar";
@@ -13,7 +13,7 @@ const darkTheme = createTheme({
 export function MeeHatApp() {
     return (
         <ThemeProvider theme={darkTheme}>
-            <Container disableGutters sx={{height: "100%", overflow: "hidden"}}>
+            <Box sx={{width: "100%", height: "100%", overflow: "hidden"}}>
                 <CssBaseline />
                 <Grid container sx={{height: "100%"}}>
                     <Grid item sx={{width: "64px", height: "100%"}}>
@@ -26,7 +26,7 @@ export function MeeHatApp() {
                         <WorkspaceMainRegion />
                     </Grid>
                 </Grid>
-            </Container>
+            </Box>
         </ThemeProvider>
     );
 }

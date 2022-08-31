@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_30_162054) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_31_024155) do
   create_table "channel_members", id: false, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "channel_id", null: false
     t.bigint "user_id", null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_162054) do
     t.boolean "is_thread_released", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "content"
     t.index ["channel_id"], name: "index_chats_on_channel_id"
     t.index ["chat_id"], name: "index_chats_on_chat_id"
     t.index ["created_at"], name: "index_chats_on_created_at"
@@ -60,6 +61,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_162054) do
     t.string "unconfirmed_email"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "workspace_members", id: false, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "workspace_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "workspaces", primary_key: "workspace_id", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|

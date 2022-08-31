@@ -56,6 +56,13 @@ bcryptによるハッシュ化（不可逆暗号化）を行ってからpassword
 | owner_user_id     | integer   | INDEX                          | ワークスペースのオーナー |
 | created_at        | timestamp |                                | ワークスペースの作成日時 |
 
+## meethat_workspace_members
+チャンネルテーブル
+
+| column            |   type    | 制約                           | 備考 |
+| ----------------- | --------- | ------------------------------ | ------------------------ |
+| workspace_id      | integer   | PRIMARYKEY INDEX               | ワークスペースID |
+| user_id           | integer   | PRIMARYKEY INDEX               | ユーザーID |
 
 ## meethat_channels
 チャンネルテーブル
@@ -92,6 +99,7 @@ bcryptによるハッシュ化（不可逆暗号化）を行ってからpassword
 | column            |   type    | 制約                           | 備考 |
 | ----------------- | --------- | ------------------------------ | ------------------------ |
 | chat_id           | integer   | PRIMARYKEY AUTTOINCREMENT INDEX| チャットID |
+| content        | string   |                           | メッセージ |
 | channel_id        | integer   | INDEX                          | チャンネルID |
 | user_id           | integer   | INDEX                          | ユーザーID |
 | created_at        | timestamp | INDEX                          | 投稿日時 |
