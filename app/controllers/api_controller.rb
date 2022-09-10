@@ -15,7 +15,6 @@ class ApiController < ApplicationController
                 profile_name => post_body["profile_name"],
                 is_custom_profile_img => post_body["is_custom_profile_img"],
                 profile_comments => post_body["profile_comments"],
-                notification_status => post_body["notification_status"],
             )
             @profile.save
             render json: @profile
