@@ -31,15 +31,15 @@ bcryptによるハッシュ化（不可逆暗号化）を行ってからpassword
 | ----------------- | --------- | ------------------------------ | ------------------------ |
 | profile_id        | integer   | PRIMARYKEY AUTTOINCREMENT INDEX| プロフィールユーザーID |
 | user_id           | integer   | INDEX                          | 紐づいているルートユーザーID |
-| email_encrypted   | string    |                                | 暗号化されたメールアドレス |
+| email             | string    |                                | メールアドレス |
 | is_display_email  | boolean   |                                | メールアドレスをプロフィールに表示するか |
-| phone_number_encrypted| string|                                | 電話番号 |
+| phone_number      | string|                                | 電話番号 |
 | profile_name      | string    |                                | プロフィール名 |
-| profile_img       | string    |                                | プロフィール画像 |
+| is_custom_profile_img|boolean |                                | プロフィール画像をカスタマイズされているか |
 | profile_comments  | string    |                                | プロフィールコメント |
 | notification_status| integer  |                                | 通知ステータス |
 | custom_status_emoji| string   |                                | カスタムステータス絵文字 |
-| custom_status     | string   |                                | カスタムステータスメッセージ |
+| custom_status_text | string   |                                | カスタムステータスメッセージ |
 
 ### `notification_status`
 - 0: すべて通知
@@ -53,7 +53,7 @@ bcryptによるハッシュ化（不可逆暗号化）を行ってからpassword
 | ----------------- | --------- | ------------------------------ | ------------------------ |
 | workspace_id      | integer   | PRIMARYKEY AUTTOINCREMENT INDEX| ワークスペースID |
 | name              | string    | INDEX                          | ワークスペース名 |
-| owner_user_id     | integer   | INDEX                          | ワークスペースのオーナー |
+| owner_profile_id  | integer   | INDEX                          | ワークスペースのオーナー |
 | created_at        | timestamp |                                | ワークスペースの作成日時 |
 
 ## meethat_workspace_members
@@ -62,7 +62,7 @@ bcryptによるハッシュ化（不可逆暗号化）を行ってからpassword
 | column            |   type    | 制約                           | 備考 |
 | ----------------- | --------- | ------------------------------ | ------------------------ |
 | workspace_id      | integer   | PRIMARYKEY INDEX               | ワークスペースID |
-| user_id           | integer   | PRIMARYKEY INDEX               | ユーザーID |
+| profile_id        | integer   | PRIMARYKEY INDEX               | ユーザーID |
 
 ## meethat_channels
 チャンネルテーブル
@@ -90,7 +90,7 @@ bcryptによるハッシュ化（不可逆暗号化）を行ってからpassword
 | column            |   type    | 制約                           | 備考 |
 | ----------------- | --------- | ------------------------------ | ------------------------ |
 | channel_id        | integer   | PRIMARYKEY INDEX               | チャンネルID |
-| user_id           | integer   | PRIMARYKEY INDEX               | ユーザーID |
+| profile_id        | integer   | PRIMARYKEY INDEX               | ユーザーID |
 
 
 ## meethat_chats
@@ -101,7 +101,7 @@ bcryptによるハッシュ化（不可逆暗号化）を行ってからpassword
 | chat_id           | integer   | PRIMARYKEY AUTTOINCREMENT INDEX| チャットID |
 | content        | string   |                           | メッセージ |
 | channel_id        | integer   | INDEX                          | チャンネルID |
-| user_id           | integer   | INDEX                          | ユーザーID |
+| profile_id        | integer   | INDEX                          | ユーザーID |
 | created_at        | timestamp | INDEX                          | 投稿日時 |
 | updated_at        | timestamp |                                | 最終アップデート日時 |
 | is_attachments    | boolean   |                                | 添付ファイルを含むか |
@@ -133,5 +133,5 @@ bcryptによるハッシュ化（不可逆暗号化）を行ってからpassword
 | column            |   type    | 制約                           | 備考 |
 | ----------------- | --------- | ------------------------------ | ------------------------ |
 | meeting_id        | integer   | PRIMARYKEY INDEX               | ミーティングID |
-| user_id           | integer   | PRIMARYKEY INDEX               | ユーザーID |
+| profile_id        | integer   | PRIMARYKEY INDEX               | ユーザーID |
 | original_file_name| string    |                                | 元のファイル名 |

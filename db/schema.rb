@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_31_024155) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_10_054738) do
   create_table "channel_members", id: false, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "channel_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "profile_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["channel_id"], name: "index_channel_members_on_channel_id"
-    t.index ["user_id"], name: "index_channel_members_on_user_id"
+    t.index ["profile_id"], name: "index_channel_members_on_profile_id"
   end
 
   create_table "channels", primary_key: "channel_id", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_024155) do
 
   create_table "chats", primary_key: "chat_id", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "channel_id"
-    t.bigint "user_id"
+    t.bigint "profile_id"
     t.boolean "is_attachments", default: false
     t.boolean "is_embed", default: false
     t.bigint "replay_to_chat_id"
@@ -44,7 +44,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_024155) do
     t.index ["channel_id"], name: "index_chats_on_channel_id"
     t.index ["chat_id"], name: "index_chats_on_chat_id"
     t.index ["created_at"], name: "index_chats_on_created_at"
-    t.index ["user_id"], name: "index_chats_on_user_id"
+    t.index ["profile_id"], name: "index_chats_on_profile_id"
+  end
+
+  create_table "profiles", primary_key: "profile_id", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "email"
+    t.boolean "is_display_email", default: false
+    t.string "phone_number"
+    t.string "profile_name"
+    t.boolean "is_custom_profile_img", default: false
+    t.string "profile_comments"
+    t.bigint "notification_status"
+    t.string "custom_status_emoji"
+    t.string "custom_status_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -65,18 +80,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_024155) do
 
   create_table "workspace_members", id: false, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "workspace_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "profile_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "workspaces", primary_key: "workspace_id", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
-    t.bigint "owner_user_id"
+    t.bigint "owner_profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_workspaces_on_name"
-    t.index ["owner_user_id"], name: "index_workspaces_on_owner_user_id"
+    t.index ["owner_profile_id"], name: "index_workspaces_on_owner_profile_id"
     t.index ["workspace_id"], name: "index_workspaces_on_workspace_id"
   end
 
