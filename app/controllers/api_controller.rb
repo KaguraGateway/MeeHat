@@ -8,13 +8,13 @@ class ApiController < ApplicationController
 
         if !post_body.blank?
             @profile = Profile.new(
-                user_id => current_user.id,
-                email => post_body["email"],
-                is_display_email => post_body["is_display_email"],
-                phone_number => post_body["phone_number"],
-                profile_name => post_body["profile_name"],
-                is_custom_profile_img => post_body["is_custom_profile_img"],
-                profile_comments => post_body["profile_comments"],
+                user_id: current_user.id,
+                email: post_body["email"],
+                is_display_email: post_body["is_display_email"],
+                phone_number: post_body["phone_number"],
+                profile_name: post_body["profile_name"],
+                is_custom_profile_img: post_body["is_custom_profile_img"],
+                profile_comments: post_body["profile_comments"],
             )
             @profile.save
             render json: @profile
@@ -35,7 +35,7 @@ class ApiController < ApplicationController
         p "post_body: #{post_body}"
 
         if !post_body.blank?
-            @workspace = Workspace.new(name => post_body["name"], owner_user_id => current_user.id)
+            @workspace = Workspace.new(name: post_body["name"], owner_profile_id: current_user.id)
             @workspace.save
             render json: @workspace
         else
