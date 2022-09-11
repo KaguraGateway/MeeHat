@@ -23,7 +23,15 @@ class ApiController < ApplicationController
         end
     end
 
+    def get_profiles
+        @profiles = Profile.where(user_id: current_user.id)
+        render json: ActiveModel::Serializer::CollectionSerializer.new(
+            @profiles, each_serializer: ProfileSerializer
+        ).to_json
+    end
+
     def get_workspaces
+        # TODO: WorkspaceMemberモデルと紐づけてユーザーIDから検索して取得するように
         @workspaces = Workspace.all
         render json: ActiveModel::Serializer::CollectionSerializer.new(
             @workspaces, each_serializer: WorkspaceSerializer

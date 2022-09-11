@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   }
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  post 'api/v1/profile', to: 'api/v1#create_profile'
+  get 'api/v1/profiles', to: 'api#create_profile'
+  post 'api/v1/profiles', to: 'api#create_profile'
 
   get 'api/v1/workspaces', to: 'api#get_workspace'
   post 'api/v1/workspaces', to: 'api#create_workspace'
