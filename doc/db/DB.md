@@ -74,6 +74,7 @@ bcryptによるハッシュ化（不可逆暗号化）を行ってからpassword
 | created_at        | timestamp |                                | チャンネルの作成日時 |
 | type              | integer   |                                | チャンネルの種類 |
 | visibility        | integer   |                                | チャンネルの可視性 |
+| workspace_id      | integer   |                                | ワークスペースID |
 
 ### `type`
 チャンネルの種類を示し、0ならテキストチャンネル、1ならボイスチャンネルを示します。
