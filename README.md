@@ -31,6 +31,7 @@ Hotwireを用いてSPA likeで開発する。
 - MYSQL_PASSWORD: MYSQL_USERのパスワード
 - REDIS_HOST: Redisのホスト（redis）
 - REDIS_PORT: Redisのポート
+- CABLE_REDIS: ActiveCable用Redis
 - MAIL_USER: メール送信用のSMTPアカウントのメールアドレス
 - MAIL_PASSWORD: メール送信用のSMTPアカウントのパスワード
 

@@ -15,17 +15,22 @@
     "@emotion/styled": "^11.10.0",
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.3",
+    "@types/rails__actioncable": "^6.1.6",
+    "actioncable": "^5.2.8-1",
     "autoprefixer": "^10.4.8",
+    "date-fns": "^2.29.2",
     "esbuild": "^0.15.5",
     "postcss": "^8.4.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
     "sass": "^1.54.5",
     "tailwindcss": "^3.1.8"
   },
   "devDependencies": {
-    "@types/react-dom": "^18.0.6",
+    "@types/actioncable": "^5.2.7",
     "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
     "npm-run-all": "^4.1.5",
     "typescript": "^4.7.4"
   }

@@ -10,7 +10,87 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_29_093505) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_27_072547) do
+  create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "channel_members", id: false, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "channel_id", null: false
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_channel_members_on_channel_id"
+    t.index ["profile_id"], name: "index_channel_members_on_profile_id"
+  end
+
+  create_table "channels", primary_key: "channel_id", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "name"
+    t.integer "channel_type"
+    t.integer "visibility"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "workspace_id"
+    t.index ["channel_id"], name: "index_channels_on_channel_id"
+    t.index ["name"], name: "index_channels_on_name"
+  end
+
+  create_table "chats", primary_key: "chat_id", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "channel_id"
+    t.bigint "profile_id"
+    t.boolean "is_attachments", default: false
+    t.boolean "is_embed", default: false
+    t.bigint "replay_to_chat_id"
+    t.bigint "thread_origin_chat_id"
+    t.boolean "is_thread_released", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "content"
+    t.index ["channel_id"], name: "index_chats_on_channel_id"
+    t.index ["chat_id"], name: "index_chats_on_chat_id"
+    t.index ["created_at"], name: "index_chats_on_created_at"
+    t.index ["profile_id"], name: "index_chats_on_profile_id"
+  end
+
+  create_table "profiles", primary_key: "profile_id", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "email"
+    t.boolean "is_display_email", default: false
+    t.string "phone_number"
+    t.string "profile_name"
+    t.boolean "is_custom_profile_img", default: false
+    t.string "profile_comments"
+    t.bigint "notification_status"
+    t.string "custom_status_emoji"
+    t.string "custom_status_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -27,4 +107,32 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_093505) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "workspace_invites", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "invite_code", null: false
+    t.bigint "workspace_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invite_code"], name: "index_workspace_invites_on_invite_code", unique: true
+    t.index ["workspace_id"], name: "index_workspace_invites_on_workspace_id"
+  end
+
+  create_table "workspace_members", id: false, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "workspace_id", null: false
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "workspaces", primary_key: "workspace_id", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.string "name"
+    t.bigint "owner_profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_workspaces_on_name"
+    t.index ["owner_profile_id"], name: "index_workspaces_on_owner_profile_id"
+    t.index ["workspace_id"], name: "index_workspaces_on_workspace_id"
+  end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
 end

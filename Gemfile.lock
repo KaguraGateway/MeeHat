@@ -57,6 +57,11 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_model_serializers (0.10.13)
+      actionpack (>= 4.1, < 7.1)
+      activemodel (>= 4.1, < 7.1)
+      case_transform (>= 0.2)
+      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
     activejob (7.0.3.1)
       activesupport (= 7.0.3.1)
       globalid (>= 0.3.6)
@@ -79,6 +84,22 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    aws-eventstream (1.2.0)
+    aws-partitions (1.628.0)
+    aws-sdk-core (3.145.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.525.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1, >= 1.6.1)
+    aws-sdk-kms (1.58.0)
+      aws-sdk-core (~> 3, >= 3.127.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.114.0)
+      aws-sdk-core (~> 3, >= 3.127.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.4)
+    aws-sigv4 (1.5.1)
+      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.13.0)
@@ -93,6 +114,8 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    case_transform (0.2)
+      activesupport
     childprocess (4.1.0)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
@@ -152,8 +175,10 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jmespath (1.6.1)
     jsbundling-rails (1.0.3)
       railties (>= 6.0.0)
+    jsonapi-renderer (0.2.2)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -297,6 +322,8 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  active_model_serializers
+  aws-sdk-s3
   bcrypt (~> 3.1.7)
   bootsnap
   capybara
