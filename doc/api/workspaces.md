@@ -13,12 +13,15 @@
 ワークスペースを削除します。このAPIにはワークスペースのオーナーである必要があります。
 
 
-## `/api/v1/workspaces/ワークスペースID/participation`
+## `/api/v1/workspaces/join`
 ### POST
 ワークスペースに参加する。
 ### DELETE
 ワークスペースから離脱する。
 
+## `/api/v1/workspaces/ワークスペースID/invite`
+### POST
+招待コードを生成します。
 
 ## `/api/v1/workspaces/ワークスペースID/channels`
 ### GET

@@ -17,7 +17,7 @@ export function LeftBottomUserBar(props: LeftBottomUserBarProps) {
         <Box sx={{width: "100%", height: "48px", background: "#5e5e5e"}}>
             <Grid container>
                 <Grid item alignItems="center" sx={{padding: "4px", marginRight: "5px"}}>
-                    <Avatar alt={props.self.profile_name} src={props.self.profile_image_url} />
+                    <Avatar alt={props.self.profile_name} src={props.self.profile_img_url} />
                 </Grid>
                 <Grid item justifyContent="center" alignItems="center" sx={{flex: 1, alignSelf: "center", overflow: "hidden"}}>
                     <Typography component="span" align="center" sx={{fontSize: "0.85rem"}}>{props.self.profile_name}</Typography>

@@ -5,6 +5,7 @@ RedisではRailsのセッション管理も行います。<br>
 | 0                 | セッション管理 |
 | 1                 | Railsキャッシュ |
 | 2                 | meehat_voicechat |
+| 3                 | Active Cable |
 
 ## meehat_voicechat
 ボイスチャンネル・ビデオミーティングに関係するKVS
